@@ -1,0 +1,23 @@
+{
+  "name": "utopian-chat-backend",
+  "version": "1.0.0",
+  "description": "socket server for utopian chat service",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app",
+    "start": "pm2 start app.js --name utopian-chat-server -e ../error.log -o ../access.log",
+    "restart": "pm2 restart utopian-chat-server -e ../error.log -o ../access.log",
+    "stop": "pm2 delete utopian-chat-server"
+  },
+  "author": "Tensor programming",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.2",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.3.2",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "pm2": "^3.2.2"
+  }
+}
