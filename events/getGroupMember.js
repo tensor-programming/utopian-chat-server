@@ -1,5 +1,6 @@
 const db = require("../models")
 
+// Populate the group with the associated members.  
 module.exports = socket => ({groupId}) => {
 
     if(!groupId) {

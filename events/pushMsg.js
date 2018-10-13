@@ -1,5 +1,7 @@
 const db = require("../models")
 
+// Push a message to the server from the frontend.  
+// Sorts messages via DM or Group. 
 module.exports = (socket,io) => ({from,friendId,groupId,data}) => {
 
     if(!data.content || !from) {
@@ -34,7 +36,7 @@ module.exports = (socket,io) => ({from,friendId,groupId,data}) => {
     }
 }
 
-
+// Creates a new message using the data sent in from the client. 
 function createMsg(data) {
     return db.Message
         .create(data)

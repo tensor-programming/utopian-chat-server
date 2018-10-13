@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 let ObjectId = Schema.Types.ObjectId
-
+// MongoDB model for Group Chat Rooms. 
 let Group = new Schema({
     name: {
         type: String,

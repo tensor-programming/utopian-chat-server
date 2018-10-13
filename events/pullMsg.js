@@ -1,5 +1,7 @@
 const db = require("../models")
 
+// Pull a message from the backend to the frontend.  
+// Sorts messages by DM or Group
 module.exports = (socket,io) => ({from,friendId,groupId,data}) => {
     let page = data.page || 1
 
@@ -31,7 +33,8 @@ module.exports = (socket,io) => ({from,friendId,groupId,data}) => {
     }
 }
 
-
+// Find a specific message in increments of 10.  Allows us to populate a group or DM with historic messages. 
+// TODO: add the ability to timeout the messages after a period of time. 
 function findMsg(opt,page) {
     return db.Message
         .find(opt)

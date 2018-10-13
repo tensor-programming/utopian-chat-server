@@ -1,6 +1,7 @@
 const Group = require("../models").Group
 
-module.exports = socket => ({ keyword }) => {
+// Find a group based on what the user is typing in the client. 
+module.exports = socket => ({keyword}) => {
     Group
         .find({
             name: {$regex: new RegExp(keyword)}
@@ -9,13 +10,13 @@ module.exports = socket => ({ keyword }) => {
         .select('_id name avatar')
         .exec()
         .then(groups => {
-            if (!groups) return []
+            if(!groups) return []
             return groups
         })
         .then(list => {
-            socket.emit('searchGroups', list)
+            socket.emit('searchGroups',list)
         })
         .catch(err => {
-            socket.emit('searchGroups', err)
+            socket.emit('searchGroups',err)
         })
 }

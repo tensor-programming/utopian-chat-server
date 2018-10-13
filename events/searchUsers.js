@@ -1,6 +1,8 @@
 const User = require("../models").User
 
-module.exports = socket => ({ from, keyword }) => {
+// Find a user from all the users in the database.  
+// TODO: add the ability to differentiate between logged in users and logged out users. 
+module.exports = socket => ({from,keyword}) => {
     User
         .find({
             name: {$regex: new RegExp(keyword)}
@@ -9,13 +11,13 @@ module.exports = socket => ({ from, keyword }) => {
         .select('_id name avatar')
         .exec()
         .then(users => {
-            if (!users) return []
+            if(!users) return []
             return users.filter(item => item._id.toString() !== from)
         })
         .then(list => {
-            socket.emit('searchUsers', list)
+            socket.emit('searchUsers',list)
         })
         .catch(err => {
-            socket.emit('searchUsers', err)
+            socket.emit('searchUsers',err)
         })
 }

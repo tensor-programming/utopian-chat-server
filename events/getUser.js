@@ -1,5 +1,6 @@
 const User = require("../models").User
 
+// Get a single user based on the from information.  
 module.exports = socket => ({from}) => {
     User
         .findById(from)
