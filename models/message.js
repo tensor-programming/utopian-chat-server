@@ -10,7 +10,9 @@ let Message = new Schema({
     content: String,
     createAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        // expire messages after a month.
+        expires: 2419200,
     },
 })
 
